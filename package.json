@@ -1,0 +1,29 @@
+{
+  "name": "minesweeper-solution",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Dima Kurilo",
+  "homepage": "https://kurilo.us/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "e2e": "protractor",
+    "start": "npm run e2e"
+  },
+  "dependencies": {
+    "jasmine-core": "^2.8.0",
+    "protractor": "^5.2.0",
+    "ts-node": "^3.3.0",
+    "@types/node": "^8.0.47",
+    "@types/jasmine": "2.6.2",
+    "typescript": "~2.6.1"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  }
+}
