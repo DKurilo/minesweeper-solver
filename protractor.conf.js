@@ -25,5 +25,8 @@ exports.config = {
   },
   onPrepare: function() {
     browser.ignoreSynchronization = true;
+  },
+  onComplete: function() {
+    browser.sleep(5000);
   }
 };
