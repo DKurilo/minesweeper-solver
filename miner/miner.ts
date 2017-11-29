@@ -15,6 +15,9 @@ export class Miner {
     this.nextTurn();
   }
   nextTurn() {
+    if (this.mines === 0) {
+      return;
+    }
     let theend: boolean = false;
     let looser: boolean = false;
     browser.executeScript((game) => {
@@ -57,7 +60,6 @@ export class Miner {
         this.doSomething();
       } else if (looser) {
         this.log('Boom!')
-        //browser.sleep(3000);
         this.startNewGame();
       }
     });
@@ -76,12 +78,12 @@ export class Miner {
     // let's click
     let actionPerformed: boolean = this.obviousSearch();
     
-    if (!actionPerformed) {
+    if (!actionPerformed && this.mines > 0) {
       // this.somethingRandom(); // to make record time uncomment this line and comment lines bellow
       
       actionPerformed = this.tryPattern121();
       actionPerformed = this.tryPattern1221();
-      if (!actionPerformed) {
+      if (!actionPerformed  && this.mines > 0) {
         this.somethingRandom();
       }
     }
@@ -162,9 +164,10 @@ export class Miner {
             alert.getText().then((text: string) => {
               this.log(text);
               alert.sendKeys('protractor').then(() => {
-                alert.accept();
-                this.callback();
-                browser.sleep(3000);
+                alert.accept().then(() => {
+                  browser.sleep(1000);
+                  this.callback();
+                });
               });
             });
           }, (err) => {
@@ -175,7 +178,6 @@ export class Miner {
         }
       }, (err) => {
         this.log('Almost done... Boom!');
-        browser.sleep(1000);
         this.startNewGame();
       });
     }

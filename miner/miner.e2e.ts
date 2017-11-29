@@ -33,7 +33,5 @@ describe('Miner', () => {
       expect<any>(element.all(by.className('facewin')).count()).toEqual(1);
     });
     miner.log('Ready to work!');
-    /*const waitingForWin = EC.presenceOf(element(by.className('facewin')));
-    browser.wait(waitingForWin, 6000000);*/
   });
 });
