@@ -29,11 +29,9 @@ describe('Miner', () => {
   
   it('should win', () => {
     const miner = new Miner();
-    miner.log('boo');
-    // const waitingForDeath = EC.presenceOf(element(by.className('facedead')));
+    miner.log('Ready to work!');
     const waitingForWin = EC.presenceOf(element(by.className('facewin')));
-    // browser.wait(EC.or(waitingForDeath, waitingForWin), 6000000);
-    browser.wait(waitingForWin, 6000000);
+    browser.wait(waitingForWin, 60000000);
     expect<any>(element.all(by.className('facewin')).count()).toEqual(1);
   });
 });
