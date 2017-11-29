@@ -10,7 +10,7 @@ export class Miner {
   
   private justClicked: string[] = [];
   
-  constructor() {
+  constructor(private callback: () => void) {
     this.elf = element(by.id('game'));
     this.nextTurn();
   }
@@ -163,6 +163,8 @@ export class Miner {
               this.log(text);
               alert.sendKeys('protractor').then(() => {
                 alert.accept();
+                this.callback();
+                browser.sleep(3000);
               });
             });
           }, (err) => {
@@ -173,7 +175,7 @@ export class Miner {
         }
       }, (err) => {
         this.log('Almost done... Boom!');
-        browser.sleep(5000);
+        browser.sleep(1000);
         this.startNewGame();
       });
     }
